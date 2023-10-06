@@ -8,13 +8,17 @@ import { MenuComponent } from './menu/menu.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { VerComponent } from './ver/ver.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AgregarComponent,
-    MenuComponent
+    MenuComponent,
+    LoginComponent,
+    VerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,48 @@
+<app-menu></app-menu>
+<section>
+    <div class="container-fluid">
+    
+        <form [formGroup]="Formulario">
+    
+            <div class="mb-3 ms-3 mt-2 row">
+                <h3>Var tarea</h3>
+            </div>
+    
+            <div class="mb-3 ms-3 mt-2 row">
+                <label class="col-sm-3 col-form-label">Titulo</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" formControlName="titulo" placeholder="Titulo de la actividad">
+
+                </div>
+            </div>
+    
+            <div class="mb-3 ms-3 mt-2 row">
+                <label class="col-sm-3 col-form-label">Descripción</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" formControlName="descripcion" placeholder="Descripción de la actividad"cols="150" rows="5"></textarea>
+                    
+                </div>
+            </div>
+        
+            <div class="mb-3 ms-3 mt-2 row">
+                <label class="col-sm-3 col-form-label">Fecha de vencimiento</label>
+                <div class="col-sm-9">
+                    <input type="date" class="form-control" formControlName="fecha" placeholder="Fecha de vencimiento">
+                </div>
+            </div>
+        
+            <div class="mb-3 ms-3 mt-2 row">
+                <label class="col-sm-3 col-form-label">Estado</label>
+                <div class="col-sm-9">
+                    <select class="form-control" formControlName="estado" class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <option value="1">Pendiente</option>
+                        <option value="2">Completada</option>
+                      </select>
+                </div>
+            </div>
+        
+        </form>
+    
+    </div>
+</section>

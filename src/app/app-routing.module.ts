@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AgregarComponent } from './agregar/agregar.component';
+import { LoginComponent } from './login/login.component';
+import { VerComponent } from './ver/ver.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [
+      {path: 'login',    component: LoginComponent},
       {path: 'agregar',    component: AgregarComponent},
-      { path: '**',      redirectTo: 'agregar' }
+      {path: 'ver/:id',    component: VerComponent},
+      { path: '**',      redirectTo: 'login' }
     ]
   }
 ];
