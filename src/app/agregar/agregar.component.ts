@@ -8,10 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AgregarComponent {
 
-  id: number = 12;
-
   Formulario: FormGroup = this.fb.group({
-    id: this.id,
+    id: this.contador(),
     titulo: [, [Validators.required, Validators.maxLength(99)]],
     descripcion: [, [Validators.required, Validators.maxLength(255)]],
     fecha: [, Validators.required],
@@ -24,13 +22,21 @@ export class AgregarComponent {
     return this.Formulario.controls[campo].errors && this.Formulario.controls[campo].touched;
   }
 
+
   guardar() {
 
+    // console.log(this.Formulario.value);
     localStorage.setItem('tarea', JSON.stringify(this.Formulario.value));
-    console.log(this.Formulario.value);
-    return this.id++;
+    this.contador()
+       
   }
-    
+
+  contador(){
+    contador= contador + 1;
+    console.log(contador);
+    return contador;
+  }    
 
 }
+let contador = 12
 
