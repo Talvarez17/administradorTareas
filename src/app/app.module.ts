@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TareasComponent } from './tareas/tareas.component';
 import { AgregarComponent } from './agregar/agregar.component';
 import { MenuComponent } from './menu/menu.component';
 import { CommonModule } from '@angular/common';
@@ -14,14 +15,11 @@ import { VerComponent } from './ver/ver.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AgregarComponent,
-    MenuComponent,
-    LoginComponent,
-    VerComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     AppRoutingModule,
     CommonModule,
     FormsModule,
