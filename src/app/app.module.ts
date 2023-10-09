@@ -15,7 +15,12 @@ import { VerComponent } from './ver/ver.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TareasComponent,
+    AgregarComponent,
+    MenuComponent,
+    LoginComponent,
+    VerComponent,
   ],
   imports: [
     BrowserModule,
