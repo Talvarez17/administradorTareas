@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tareas',
@@ -22,12 +24,19 @@ export class TareasComponent {
   ];
 
   tareasFiltradas: any[] = [];
+  // filtro: string = "Pendiente";
 
-  filtro: string = "Pendiente";
+  formulario = this.fb.group({
+    filtro: '',
+  });
 
- constructor(){
-  console.log(this.filtro);
+ constructor(
+  private fb: FormBuilder,
+  private router: Router
+ ){
+  console.log(this.formulario.controls.filtro.value);
   console.log(this.tareas[0].estado);
+  this.filtrarTareas();
  }
 
  verTarea(idTarea: string){
@@ -35,7 +44,8 @@ export class TareasComponent {
  }
 
  filtrarTareas(){
-  this.tareas.filter(e => e.estado.includes(this.filtro))
+  console.log(this.formulario.controls.filtro.value);
+  console.log(this.tareas.filter(e => e.estado.includes(this.formulario.controls.filtro.value)));
  }
 
 

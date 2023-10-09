@@ -1,13 +1,15 @@
   <div class="p-4">
 
   <article class="w mb-5 flex justify-center items-center">
-    <aside class="w-full flex justify-end items-center">
-      <label for="estado" class="block mb-2 text-sm font-medium text-gray-900">Filtrar por estado</label>
-      <select id="estado" class="w-1/5 bg-gray-50 border text-gray-900 text-sm rounded-lg p-2.5">
-        <option value="estado" selected>Estado</option>
-        <option value="pendiente">Pendiente</option>
-        <option value="completada">Completada</option>
+    <aside [formGroup]="formulario" class="w-full flex justify-end items-center">
+      <select formControlName="filtro" id="filtro" class="w-1/5 bg-gray-50 border text-gray-900 text-sm rounded-lg p-2.5">
+      <label for="filtro" class="block mb-2 text-sm font-medium text-gray-900">Filtrar por estado</label>
+
+        <option value="Estado" name="Estado"selected>Estado</option>
+        <option value="Pendiente" name="Pendiente">Pendiente</option>
+        <option value="Completada" name="Completada">Completada</option>
       </select>
+
     </aside>
   </article>
 
