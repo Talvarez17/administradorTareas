@@ -13,7 +13,7 @@ const routes: Routes = [
       {path: 'agregar',    component: AgregarComponent},
       {path: 'ver/:id',    component: VerComponent},
       { path: 'tareas', component: TareasComponent, },
-      { path: '**',      redirectTo: 'login' }
+      { path: '**',      redirectTo: 'tareas' }
     ]
   }
 ];

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-agregar',
@@ -9,14 +10,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AgregarComponent {
 
   Formulario: FormGroup = this.fb.group({
-    id: this.contador(),
     titulo: [, [Validators.required, Validators.maxLength(99)]],
     descripcion: [, [Validators.required, Validators.maxLength(255)]],
     fecha: [, Validators.required],
-    estado: [,Validators.required]   
+    estado: [,Validators.required]
   });
 
-  constructor(private fb: FormBuilder) { }
+  tareas: any[] = [];
+
+  constructor(
+    private fb: FormBuilder,
+    private router:Router
+    ) { }
 
   campoEsValido(campo: string) {
     return this.Formulario.controls[campo].errors && this.Formulario.controls[campo].touched;
@@ -24,19 +29,13 @@ export class AgregarComponent {
 
 
   guardar() {
+    this.tareas = JSON.parse(localStorage.getItem('tareas') || '{}');
+    this.tareas.push(this.Formulario.value);
 
-    // console.log(this.Formulario.value);
-    localStorage.setItem('tarea', JSON.stringify(this.Formulario.value));
-    this.contador()
-       
+    localStorage.setItem('tareas', JSON.stringify(this.tareas));
+
+    this.router.navigate(['tareas']);
   }
 
-  contador(){
-    contador= contador + 1;
-    console.log(contador);
-    return contador;
-  }    
-
 }
-let contador = 12
 

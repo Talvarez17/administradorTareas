@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-tareas',
@@ -9,43 +9,40 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class TareasComponent {
 
-  tareas: any[] = [
-    {idTarea: "1", titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Pendiente"},
-    {idTarea: "2", titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Completada"},
-    {idTarea: "3", titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Pendiente"},
-    {idTarea: "4", titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Completada"},
-    {idTarea: "5", titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Pendiente"},
-    {idTarea: "6", titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Completada"},
-    {idTarea: "7", titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Pendiente"},
-    {idTarea: "8", titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Completada"},
-    {idTarea: "9", titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Pendiente"},
-    {idTarea: "10", titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Completada"},
-    {idTarea: "11", titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Pendiente"}
-  ];
+  tareas: any[] = [];
+
 
   tareasFiltradas: any[] = [];
-  // filtro: string = "Pendiente";
 
   formulario = this.fb.group({
-    filtro: '',
+    filtro: 'Todas',
   });
 
- constructor(
-  private fb: FormBuilder,
-  private router: Router
- ){
-  console.log(this.formulario.controls.filtro.value);
-  console.log(this.tareas[0].estado);
-  this.filtrarTareas();
+  constructor(
+    private fb: FormBuilder,
+    private router: Router
+    ){
+      this.tareas = JSON.parse(localStorage.getItem('tareas') || '{}');
+      this.tareas = this.tareas.reverse();
+      this.filtrarTareas();
  }
 
- verTarea(idTarea: string){
-  localStorage.setItem("idTarea", idTarea);
+ verTarea(idTarea: any){
+  localStorage.setItem("idTarea", this.tareas.indexOf(idTarea).toString());
+ }
+
+ eliminarTarea(idTarea: any){
+  this.tareas.splice(this.tareas.indexOf(idTarea), 1);
+  localStorage.setItem("tareas", JSON.stringify(this.tareas));
  }
 
  filtrarTareas(){
-  console.log(this.formulario.controls.filtro.value);
-  console.log(this.tareas.filter(e => e.estado.includes(this.formulario.controls.filtro.value)));
+  if (this.formulario.controls.filtro.value == "Todas") {
+    this.tareasFiltradas = this.tareas;
+  }else{
+    this.tareasFiltradas = this.tareas.filter(e => e.estado.includes(this.formulario.controls.filtro.value));
+  }
+
  }
 
 

@@ -2,15 +2,15 @@
 <!-- Formulario para la creacion de un nuevo anime -->
 <section>
     <div class="container-fluid">
-    
+
         <form (ngSubmit)="guardar()" [formGroup]="Formulario">
-    
-            <div class="mb-3 ms-3 mt-2 row">
+
+            <div class="mb-10 ms-3 mt-2 row flex w-full text-center text-xl font-semibold">
                 <h3>Agregar tarea</h3>
             </div>
-    
+
             <div class="mb-3 ms-3 mt-2 row">
-                <label class="col-sm-3 col-form-label">Titulo</label>
+                <label class="col-sm-3 col-form-label">Título</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" formControlName="titulo" placeholder="Titulo de la actividad">
                     <span class="form-text text-danger" *ngIf="campoEsValido('titulo')">
@@ -18,7 +18,7 @@
                     </span>
                 </div>
             </div>
-    
+
             <div class="mb-3 ms-3 mt-2 row">
                 <label class="col-sm-3 col-form-label">Descripción</label>
                 <div class="col-sm-9">
@@ -28,7 +28,7 @@
                     </span>
                 </div>
             </div>
-        
+
             <div class="mb-3 ms-3 mt-2 row">
                 <label class="col-sm-3 col-form-label">Fecha de vencimiento</label>
                 <div class="col-sm-9">
@@ -38,13 +38,13 @@
                     </span>
                 </div>
             </div>
-        
+
             <div class="mb-3 ms-3 mt-2 row">
                 <label class="col-sm-3 col-form-label">Estado</label>
                 <div class="col-sm-9">
                     <select class="form-control" formControlName="estado" class="form-select" aria-label="Default select example">
                         <option selected></option>
-                        <option value="Pendente">Pendiente</option>
+                        <option value="Pendiente">Pendiente</option>
                         <option value="Completada">Completada</option>
                       </select>
                     <span class="form-text text-danger" *ngIf="campoEsValido('estado')">
@@ -52,15 +52,15 @@
                     </span>
                 </div>
             </div>
-        
+
             <div class="d-flex flex-row-reverse">
-                <button type="submit" [disabled]="!Formulario.valid" class="btn btn-outline-success">
+                <button type="submit" [disabled]="!Formulario.valid"class="btn btn-outline-success">
                     <i class="fa-solid fa-floppy-disk"></i>
                 </button>
-        
+
             </div>
-        
+
         </form>
-    
+
     </div>
 </section>

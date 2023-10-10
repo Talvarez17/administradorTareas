@@ -8,6 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  tareas: any[] = [
+    {titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Pendiente"},
+    {titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Completada"},
+    {titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Pendiente"},
+    {titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Completada"},
+    {titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Pendiente"},
+    {titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Completada"},
+    {titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Pendiente"},
+    {titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Completada"},
+    {titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Pendiente"},
+    {titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Completada"},
+    {titulo: "Tarea 1", descripcion: "Descripción 1", fecha: "06-10-2023", estado: "Pendiente"}
+   ];
 
   Lista: any = [
     { correo: "tom@gmail.com", pass: "123456" }
@@ -19,16 +32,27 @@ export class LoginComponent {
   });
 
   constructor(private fb: FormBuilder, private router: Router) {
+
   }
 
+  // insertsIniciales(){
+    //   if(localStorage.getItem("tareas", JSON.stringify(this.tareas)) !== null){
 
+      //   }
+      // }
 
   Login() {
+
+    if(localStorage.getItem('tareas') == null || localStorage.getItem('tareas') == 'null'){
+      localStorage.setItem("tareas", JSON.stringify(this.tareas));
+    }
+
+
 
     if (this.Formulario.controls["correo"].value == this.Lista[0].correo && this.Formulario.controls["pass"].value == this.Lista[0].pass) {
       console.log("exitoso");
 
-      this.router.navigate(['/agregar']);
+      this.router.navigate(['/tareas']);
 
     } else {
 

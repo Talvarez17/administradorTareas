@@ -1,11 +1,12 @@
+  <app-menu></app-menu>
   <div class="p-4">
 
-  <article class="w mb-5 flex justify-center items-center">
-    <aside [formGroup]="formulario" class="w-full flex justify-end items-center">
-      <select formControlName="filtro" id="filtro" class="w-1/5 bg-gray-50 border text-gray-900 text-sm rounded-lg p-2.5">
+  <article class="w mb-2 flex justify-center items-center">
+    <aside [formGroup]="formulario" class="w-full flex justify-start items-center">
+      <select formControlName="filtro" id="filtro" (click)="filtrarTareas()" class="w-1/5 bg-gray-50 border text-gray-900 text-sm rounded-lg p-2.5">
       <label for="filtro" class="block mb-2 text-sm font-medium text-gray-900">Filtrar por estado</label>
 
-        <option value="Estado" name="Estado"selected>Estado</option>
+        <option value="Todas" name="Todas"selected>Todas</option>
         <option value="Pendiente" name="Pendiente">Pendiente</option>
         <option value="Completada" name="Completada">Completada</option>
       </select>
@@ -38,7 +39,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let tarea of tareas" (click)="verTarea(tarea.idTarea)" class="bg-white hover:bg-gray-100">
+            <tr *ngFor="let tarea of tareasFiltradas" class="bg-white hover:bg-gray-100">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                   {{tarea.titulo}}
                 </th>
@@ -58,7 +59,7 @@
                   </svg>
                 </td>
                 <td class="px-6 py-4">
-                  <svg class="w-5 h-5 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                  <svg (click)="eliminarTarea(tarea)" class="w-5 h-5 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
                   </svg>
                 </td>
