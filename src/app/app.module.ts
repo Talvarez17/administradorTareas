@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { VerComponent } from './ver/ver.component';
+import { EditarComponent } from './editar/editar.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { VerComponent } from './ver/ver.component';
     MenuComponent,
     LoginComponent,
     VerComponent,
+    EditarComponent,
   ],
   imports: [
     BrowserModule,

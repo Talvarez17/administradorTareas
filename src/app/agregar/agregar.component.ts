@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
+import { TareasService } from '../services/tareas.service';
 
 @Component({
   selector: 'app-agregar',
@@ -20,15 +21,26 @@ export class AgregarComponent {
 
   constructor(
     private fb: FormBuilder,
-    private router:Router
-    ) { }
+    private router:Router,
+    private crud: TareasService
+    ) {
+      // this.Datos = this.crud.obtenerDatos();
+    }
 
   campoEsValido(campo: string) {
     return this.Formulario.controls[campo].errors && this.Formulario.controls[campo].touched;
   }
 
+  guardar(){
+    if (!this.Formulario.valid) {
+      return;
+    }
+    this.crud.agregarDato(this.Formulario.value);
+    this.Formulario.reset();
+    this.router.navigate(['tareas']);
+  }
 
-  guardar() {
+  guardar2() {
     this.tareas = JSON.parse(localStorage.getItem('tareas') || '{}');
     this.tareas.push(this.Formulario.value);
 
