@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { VerComponent } from './ver/ver.component';
 import { EditarComponent } from './editar/editar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -30,8 +31,8 @@ import { EditarComponent } from './editar/editar.component';
     AppRoutingModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

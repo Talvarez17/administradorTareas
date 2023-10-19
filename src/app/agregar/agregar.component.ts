@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
 import { TareasService } from '../services/tareas.service';
+import { BddService } from '../services/bdd.service';
 
 @Component({
   selector: 'app-agregar',
@@ -18,11 +19,13 @@ export class AgregarComponent {
   });
 
   tareas: any[] = [];
+  tareasDB: any;
 
   constructor(
     private fb: FormBuilder,
     private router:Router,
-    private crud: TareasService
+    private crud: TareasService,
+    private conexion: BddService
     ) {
       // this.Datos = this.crud.obtenerDatos();
     }
@@ -49,5 +52,17 @@ export class AgregarComponent {
     this.router.navigate(['tareas']);
   }
 
+  /* Cambios Brandon */
+  AgregarTarea() {
+    if (this.Formulario.touched) {
+      this.conexion.Post('', '', this.Formulario.value).subscribe((dato: any) => {
+        if (dato['estatus']) {
+          this.router.navigate(['/tareas']);
+        }
+      })
+    }
+  }
+
+  
 }
 

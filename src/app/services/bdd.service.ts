@@ -6,11 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class BddService {
 
-  baseUrl = 'https://localhost/admin/controller/';
+  baseUrl = 'http://localhost/adminTareasService/controller/';
   public httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8',
-      'ngrok-skip-browser-warning': 'true'
+      'Content-Type': 'application/json; charset=utf-8; Access-Control-Allow-Origin'
     })
   };
 
