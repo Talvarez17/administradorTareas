@@ -1,59 +1,48 @@
 <!-- <nav class="navbar navbar-expand-lg bg-primary">
-    <div class="container-fluid">
-        <a class="navbar-brand" [routerLink]="['/tareas']">
-            <img src="https://cdn-icons-png.flaticon.com/128/2847/2847502.png" width="50" height="50"
-                class="d-inline-block align-text-top"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" aria-current="page" [routerLink]="['/tareas']">Tareas</a>
-                <a class="nav-link" aria-current="page" [routerLink]="['/agregar']">Agreagr</a>
-            </div>
 
-        </div>
+  <div class="container-fluid">
+
+    <a class="navbar-brand" [routerLink]="['/tareas']">
+      <img src="https://cdn-icons-png.flaticon.com/128/2847/2847502.png" width="50" height="50"
+        class="d-inline-block align-text-top"></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" aria-current="page" [routerLink]="['/tareas']">Tareas</a>
+        <a class="nav-link" aria-current="page" [routerLink]="['/agregar']">Agregar</a>
+        <a class="nav-link " aria-current="page" [routerLink]="['/login']">Salir</a>
+      </div>
+
     </div>
+  </div>
 </nav> -->
 
+<nav class="navbar bg-body-tertiary mt-n1 ">
+  <div class="container-fluid bg-primary">
+    <a class="navbar-brand" href="#"><img src="https://cdn-icons-png.flaticon.com/128/2847/2847502.png" width="50" height="50"> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-
-<nav class="bg-white border-gray-200">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a class="navbar-brand" [routerLink]="['/tareas']">
-      <img src="https://cdn-icons-png.flaticon.com/128/2847/2847502.png" width="50" height="50" class="d-inline-block align-text-top">
-     </a>
-
-     <aside class="flex justify-center items-center">
-       <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
-         <span class="sr-only">Open main menu</span>
-         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-          </svg>
-        </button>
-
-        <div class="hidden w-full h-fit md:block md:w-auto" id="navbar-default">
-          <ul class="font-medium flex flex-col md:p-0 mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
-            <li>
-              <a class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" [routerLink]="['/tareas']">Tareas</a>
-            </li>
-            <li>
-              <a class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" [routerLink]="['/agregar']">Agregar</a>
-            </li>
-          </ul>
-        </div>
-
-        <svg (click)="logOut()" class="w-5 h-5 text-gray-900 ml-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 15">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.7" d="M1 7.5h11m0 0L8 3.786M12 7.5l-4 3.714M12 1h3c.53 0 1.04.196 1.414.544.375.348.586.82.586 1.313v9.286c0 .492-.21.965-.586 1.313A2.081 2.081 0 0 1 15 14h-3"/>
-        </svg>
-      </aside>
-
+    <div class="offcanvas offcanvas-end bg-info-subtle" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">AdminTareas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" [routerLink]="['/tareas']">Tareas</a>
+            <a class="nav-link" aria-current="page" [routerLink]="['/agregar']">Agregar</a>
+            <a class="nav-link " aria-current="page" [routerLink]="['/login']">Salir</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </nav>
-
-
-
-
-
-
