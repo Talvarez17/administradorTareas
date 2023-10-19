@@ -54,7 +54,7 @@ export class EditarComponent {
     /* Cambios Brandon */
     Actualizar() {
       if (this.Formulario.touched) {
-        this.conexion.Post('', '', this.Formulario.value).subscribe((dato: any) => {
+        this.conexion.post('', '', this.Formulario.value).subscribe((dato: any) => {
           if (dato['estatus']) {
             this.router.navigate(['/tareas']);
           }

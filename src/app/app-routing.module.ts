@@ -15,7 +15,7 @@ const routes: Routes = [
       {path: 'ver/:i',    component: VerComponent},
       {path: 'editar/:i',    component: EditarComponent},
       { path: 'tareas', component: TareasComponent, },
-      { path: '**',      redirectTo: 'tareas' }
+      { path: '**',      redirectTo: 'login' }
     ]
   }
 ];
