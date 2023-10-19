@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TareasService } from '../services/tareas.service';
+import { BddService } from '../services/bdd.service';
 
 @Component({
   selector: 'app-editar',
@@ -23,7 +24,8 @@ export class EditarComponent {
     private fb: FormBuilder,
     private router:Router,
     private crud: TareasService,
-    private activeRouter: ActivatedRoute
+    private activeRouter: ActivatedRoute,
+    private conexion: BddService
     ) {
       localStorage.getItem('tarea');
       this.editar(localStorage.getItem('i'), localStorage.getItem('tarea'))
@@ -45,9 +47,21 @@ export class EditarComponent {
       this.router.navigate(['tareas']);
     }
 
-
     campoEsValido(campo: string) {
       return this.Formulario.controls[campo].errors && this.Formulario.controls[campo].touched;
+    }
+    
+    /* Cambios Brandon */
+    Actualizar() {
+      if (this.Formulario.touched) {
+        this.conexion.Post('', '', this.Formulario.value).subscribe((dato: any) => {
+          if (dato['estatus']) {
+            this.router.navigate(['/tareas']);
+          }
+          console.log(dato);
+  
+        });
+      }
     }
 
 }
