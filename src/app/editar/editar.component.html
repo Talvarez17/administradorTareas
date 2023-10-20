@@ -1,12 +1,11 @@
 <app-menu></app-menu>
-<!-- Formulario para la creacion de un nuevo anime -->
 <section>
     <div class="container-fluid">
 
-        <form (ngSubmit)="guardarEditado()" [formGroup]="Formulario">
+        <form (ngSubmit)="actualizar()" [formGroup]="Formulario">
 
             <div class="mb-10 ms-3 mt-2 row flex w-full text-center text-xl font-semibold">
-                <h3>Agregar tarea</h3>
+                <h3>Editar tarea</h3>
             </div>
 
             <div class="mb-3 ms-3 mt-2 row">

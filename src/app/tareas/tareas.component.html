@@ -1,11 +1,11 @@
-  <app-menu></app-menu>
+<app-menu></app-menu>
   <div class="p-4">
 
   <article class="col-2 mb-2">
     <aside [formGroup]="formulario" class="w-full flex justify-start items-center">
       <select formControlName="filtro" id="filtro" (click)="filtrarTareas()" class="form-select" >
 
-        <option value="Todas" name="Todas"selected>Todas</option>
+        <option selected value="Todas" name="Todas">Todas</option>
         <option value="Pendiente" name="Pendiente">Pendiente</option>
         <option value="Completada" name="Completada">Completada</option>
       </select>
@@ -26,14 +26,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td><button type="button" class="btn btn-primary"><i class="bi bi-eye-fill"></i></button></td>
-        <td><button type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></button></td>
-        <td><button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
+      <tr *ngFor="let U of tareasFiltradas">
+        <th scope="row">{{U.titulo}}</th>
+        <td>{{ U.descripcion }}</td>
+        <td>{{ U.fechaVencimiento }}</td>
+        <td>{{ U.estado }}</td>
+        <td><button [routerLink]="['/ver',U.id]" type="button" class="btn btn-primary"><i class="bi bi-eye-fill"></i></button></td>
+        <td><button [routerLink]="['/editar',U.id]" type="button" class="btn btn-success"><i class="bi bi-pencil-square"></i></button></td>
+        <td><button (click)="EliminarTarea(U.id)" type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
       </tr>
     </tbody>
   </table>

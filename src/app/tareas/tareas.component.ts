@@ -10,42 +10,38 @@ import { BddService } from '../services/bdd.service';
   styleUrls: ['./tareas.component.css'],
 })
 export class TareasComponent {
-  tareas: any[] = [];
-  Index = -1;
+  // tareas: any[] = [];
+  // Index = -1;
 
-  tareasDB: any;
+  tareasDB: any = [];
 
-  tareasFiltradas: any[] = [];
+  tareasFiltradas: any = [];
 
   formulario = this.fb.group({
-    filtro: 'Todas',
+    filtro: "Todas",
   });
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private crud: TareasService,
-    private conexion: BddService
-  ) {
-    this.tareas = JSON.parse(localStorage.getItem('tareas') || '{}');
+  constructor(private fb: FormBuilder,private router: Router,private crud: TareasService,private conexion: BddService) {
+    // this.tareas = JSON.parse(localStorage.getItem('tareas') || '{}');
     // this.tareas = this.tareas.reverse();
     this.filtrarTareas();
-    this.tareas = this.crud.obtenerDatos();
+    // this.tareas = this.crud.obtenerDatos();
     this.ObtenerTareas()
+    
   }
 
-  eliminar(i: any) {
-    this.crud.eliminarDato(i);
-    this.filtrarTareas();
-  }
+  // eliminar(i: any) {
+  //   this.crud.eliminarDato(i);
+  //   this.filtrarTareas();
+  // }
 
-  actualizarTarea(i: any, tarea: any) {
-    localStorage.setItem('tarea', this.tareas.indexOf(tarea).toString());
-    localStorage.setItem('tarea', JSON.stringify(tarea));
-    localStorage.setItem('i', JSON.stringify(i));
-    localStorage.getItem('tarea');
-    this.router.navigate(['/editar/:']);
-  }
+  // actualizarTarea(i: any, tarea: any) {
+  //   localStorage.setItem('tarea', this.tareas.indexOf(tarea).toString());
+  //   localStorage.setItem('tarea', JSON.stringify(tarea));
+  //   localStorage.setItem('i', JSON.stringify(i));
+  //   localStorage.getItem('tarea');
+  //   this.router.navigate(['/editar/:']);
+  // }
 
   //  verTarea(idTarea: any){
   //   localStorage.setItem("idTarea", this.tareas.indexOf(idTarea).toString());
@@ -58,26 +54,29 @@ export class TareasComponent {
 
   filtrarTareas() {
     if (this.formulario.controls.filtro.value == 'Todas') {
-      this.tareasFiltradas = this.tareas;
+      this.tareasFiltradas = this.tareasDB;
+
     } else {
-      this.tareasFiltradas = this.tareas.filter((e) =>
+      this.tareasFiltradas = this.tareasDB.filter((e: any) =>
         e.estado.includes(this.formulario.controls.filtro.value)
       );
     }
   }
 
-  EliminarCuenta(id: any) {
-    this.conexion.Post('tareas', 'delete', id ).subscribe((dato: any) => {
+  EliminarTarea(id: any) {
+    console.log(id);
+    this.conexion.Post('tareas', 'delete', { "id": id } ).subscribe((dato: any) => {
       console.log(dato);
-      if (dato['estatus']) {
-
-      }
+        window.location.reload();
+        console.log("exito");
+        
+      
     });
   }
 
   ObtenerTareas() {
     this.conexion.Get('tareas', 'getAll').subscribe((info: any) => {
-      this.tareasDB = info;
+      this.tareasDB = info.reverse();
       console.log(this.tareasDB);
       
     })
